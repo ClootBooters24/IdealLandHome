@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://warstlerdigital.com/</loc>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://warstlerdigital.com/portfolio</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://warstlerdigital.com/about</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://warstlerdigital.com/contact</loc>
+        <priority>0.80</priority>
+    </url>
+
+    <!-- Legal Pages -->
+    <url>
+        <loc>https://warstlerdigital.com/legal/accessibility</loc>
+        <priority>0.50</priority>
+    </url>
+    <url>
+        <loc>https://warstlerdigital.com/legal/privacy-policy</loc>
+        <priority>0.50</priority>
+    </url>
+    <url>
+        <loc>https://warstlerdigital.com/legal/terms-of-service</loc>
+        <priority>0.50</priority>
+    </url>
+    <url>
+        <loc>https://warstlerdigital.com/legal/service-scope</loc>
+        <priority>0.50</priority>
+    </url>
+
+    <!-- 404 -->
+    <url>
+        <loc>https://warstlerdigital.com/404</loc>
+        <priority>0.01</priority>
+    </url>
+</urlset>
