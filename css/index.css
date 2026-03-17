@@ -1,1 +1,45 @@
-﻿
+﻿/* Color Palette */
+:root {
+    --page-bg: #FCFBF9;
+    --primary-dark: #102F43;
+    --secondary-text: #3A556A;
+    --primary-accent: #F6AE2D;
+    --secondary-accent: #5FA8D3;
+    --white: #FFFFFF;
+}
+
+/* Page layout */
+body {
+    background-color: var(--page-bg);
+    color: var(--primary-dark);
+}
+
+main {
+    padding: 110px 0 80px;
+    min-height: calc(100vh - 320px);
+    background: var(--page-bg);
+}
+
+/* Header / Navigation */
+header,
+nav {
+    background-color: var(--primary-dark);
+    color: var(--white);
+}
+
+/* Body text */
+p {
+    color: var(--primary-dark);
+}
+
+/* Secondary text */
+.secondary-text,
+small {
+    color: var(--secondary-text);
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-dark);
+    color: var(--white);
+}
