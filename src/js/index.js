@@ -3,12 +3,23 @@ const yearEl = document.getElementById('copyright-year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // Mark the active nav link based on current page
-const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+const normalizePath = path => {
+    if (!path) return '/';
+    const withoutHtml = path.replace(/\/index\.html$/i, '/').replace(/\.html$/i, '');
+    const trimmed = withoutHtml.replace(/\/$/, '');
+    return trimmed || '/';
+};
+
+const currentPath = normalizePath(window.location.pathname);
 document.querySelectorAll('.main-nav a').forEach(link => {
-    const href = link.getAttribute('href').replace(/\/$/, '');
-    const isHome = (href === '/' || href === 'index.html') && (currentPath === '/' || currentPath === '');
-    const isMatch = !isHome && href !== '/' && href !== 'index.html' && currentPath.endsWith(href.replace('.html', ''));
-    if (isHome || isMatch) link.classList.add('active');
+    const linkPath = normalizePath(new URL(link.getAttribute('href'), window.location.origin).pathname);
+    const isActive = linkPath === currentPath;
+    link.classList.toggle('active', isActive);
+    if (isActive) {
+        link.setAttribute('aria-current', 'page');
+    } else {
+        link.removeAttribute('aria-current');
+    }
 });
 
 // Mobile navigation toggle
