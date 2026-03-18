@@ -81,6 +81,13 @@
     color: var(--secondary-text);
 }
 
+.gallery-loading[hidden],
+.gallery-error[hidden],
+.gallery-empty[hidden],
+.gallery-filters[hidden] {
+    display: none !important;
+}
+
 .gallery-spinner {
     width: 44px;
     height: 44px;
