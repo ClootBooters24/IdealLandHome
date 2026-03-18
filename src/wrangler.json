@@ -1,15 +1,15 @@
 {
     "name": "ideal-land-home",
     "compatibility_date": "2026-03-09",
-    "main": "src/workers/gallery.js",
+    "main": "/workers/gallery.js",
     "assets": {
         "directory": "./",
         "not_found_handling": "404-page"
     },
     "kv_namespaces": [
-        { "binding": "GALLERY_KV", "id": "67c33718e58e4407bc473c1335dfd455" }
+        { "binding": "ideallandhome-kv", "id": "67c33718e58e4407bc473c1335dfd455" }
     ],
     "r2_buckets": [
-        { "binding": "GALLERY_BUCKET", "bucket_name": "ideallandhome" }
+        { "binding": "ideallandhome-r2", "bucket_name": "ideallandhome" }
     ]
 }
