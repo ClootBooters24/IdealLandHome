@@ -2,6 +2,7 @@
 'use strict';
 
 const GALLERY_API = '/api/gallery';
+const MEDIA_BASE_URL = 'https://media.ideal-land-home.com';
 
 let allItems = [];
 let filteredItems = [];
@@ -17,7 +18,11 @@ function escapeHtml(str) {
 }
 
 function imageUrl(r2Key) {
-    return '/images/' + encodeURIComponent(r2Key);
+    if (!r2Key) return '';
+    // Allow full URLs in KV, otherwise resolve against media host.
+    if (/^https?:\/\//i.test(r2Key)) return r2Key;
+    const cleanKey = String(r2Key).replace(/^\/+/, '');
+    return `${MEDIA_BASE_URL}/${cleanKey}`;
 }
 
 // ─── Gallery Load ────────────────────────────────────────────────────────────
