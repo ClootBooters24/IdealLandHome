@@ -16,6 +16,84 @@
     --transition: 0.3s ease;
 }
 
+/* ==== Desktop Header Layout ==== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: var(--primary-dark);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+.logo-title {
+    color: var(--white);
+    font-size: 1.4rem;
+    font-weight: 700;
+    white-space: nowrap;
+    letter-spacing: -0.01em;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.main-nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.3rem 0;
+    position: relative;
+    transition: color var(--transition);
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary-accent);
+    transform: scaleX(0);
+    transition: transform var(--transition);
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--primary-accent);
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    transform: scaleX(1);
+}
+
 /* Mobile Menu Toggle */
 .mobile-menu-toggle {
     display: none;
@@ -98,10 +176,17 @@
         gap: 1.5rem;
     }
     
+    /* Nav links are on a white panel on mobile — must be dark */
     .main-nav a {
         display: block;
         font-size: 1.1rem;
         padding: 0.75rem 0;
+        color: var(--primary-dark);
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+        color: var(--primary-accent);
     }
     
     .btn-donate {
@@ -163,6 +248,12 @@
         display: block;
         font-size: 1.1rem;
         padding: 0.75rem 0;
+        color: var(--primary-dark);
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+        color: var(--primary-accent);
     }
     
     .btn-donate {

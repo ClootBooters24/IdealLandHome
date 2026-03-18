@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gallery | IDEAL Land &amp; Home Contractors LLC</title>
+        <link rel="icon" href="">
+        <link rel="apple-touch-icon" href="">
+        <link rel="canonical" href="https://www.ideal-land-home.com/gallery"/>
+
+        <!-- OG Meta -->
+        <meta property="og:title" content="Gallery | IDEAL Land &amp; Home Contractors LLC"/>
+        <meta property="og:url" content="https://www.ideal-land-home.com/gallery"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content=""/>
+
+        <!-- Name -->
+        <meta name="twitter:title" content="Gallery | IDEAL Land &amp; Home Contractors LLC"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="description" content="Browse our portfolio of land clearing, home construction, and renovation projects across Arkansas."/>
+
+        <!-- JSON-LD -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ImageGallery",
+            "url": "https://www.ideal-land-home.com/gallery",
+            "name": "Project Gallery — IDEAL Land & Home Contractors LLC",
+            "description": "Land clearing, home construction, and renovation project photos.",
+            "creator": {
+                "@type": "LocalBusiness",
+                "name": "IDEAL Land & Home Contractors LLC"
+            }
+        }
+        </script>
+
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/headers.css">
+        <link rel="stylesheet" href="css/footers.css">
+        <link rel="stylesheet" href="css/gallery.css">
+    </head>
+
+    <body>
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-content">
+                <div class="logo">
+                    <h1 class="logo-title">IDEAL Land &amp; Home</h1>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <section class="gallery-hero">
+                <div class="gallery-hero-inner">
+                    <h2>Our Work</h2>
+                    <p>Browse our completed land clearing, construction, and renovation projects across Arkansas.</p>
+                </div>
+            </section>
+
+            <section class="gallery-section">
+                <div class="gallery-container">
+
+                    <!-- Category Filters -->
+                    <div id="gallery-filters" class="gallery-filters" aria-label="Filter by category">
+                        <button class="filter-btn active" data-filter="all">All Projects</button>
+                        <!-- Additional category buttons are injected by gallery.js -->
+                    </div>
+
+                    <!-- Loading State -->
+                    <div id="gallery-loading" class="gallery-loading" aria-live="polite">
+                        <div class="gallery-spinner" aria-hidden="true"></div>
+                        <p>Loading projects…</p>
+                    </div>
+
+                    <!-- Error State (hidden by default) -->
+                    <div id="gallery-error" class="gallery-error" hidden aria-live="assertive" role="alert">
+                        <p>Unable to load the gallery right now. Please <a href="contact.html">contact us</a> to see our work.</p>
+                    </div>
+
+                    <!-- Empty State (hidden by default) -->
+                    <div id="gallery-empty" class="gallery-empty" hidden>
+                        <p>No projects in this category yet. <a href="contact.html">Get in touch</a> to start yours.</p>
+                    </div>
+
+                    <!-- Gallery Grid -->
+                    <div id="gallery-grid" class="gallery-grid" aria-label="Project photos"></div>
+
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="gallery-cta">
+                <div class="gallery-cta-inner">
+                    <h3>Ready to Start Your Project?</h3>
+                    <p>Let's talk about what we can build together.</p>
+                    <a href="contact.html" class="btn-cta">Get a Free Quote</a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Lightbox -->
+        <div id="gallery-lightbox" class="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+            <div class="lightbox-overlay"></div>
+            <div class="lightbox-content">
+                <button id="lightbox-close" class="lightbox-close" aria-label="Close image viewer">&times;</button>
+                <button class="lightbox-prev lightbox-nav" aria-label="Previous image">&#8249;</button>
+                <button class="lightbox-next lightbox-nav" aria-label="Next image">&#8250;</button>
+                <div class="lightbox-img-wrap">
+                    <img class="lightbox-img" src="" alt="">
+                </div>
+                <div class="lightbox-caption">
+                    <p class="lightbox-title"></p>
+                    <p class="lightbox-desc"></p>
+                    <span class="lightbox-counter"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-section">
+                <h3>IDEAL Land &amp; Home Contractors LLC</h3>
+                <p>Professional land clearing, home construction, and renovation in Arkansas.</p>
+                <ul class="footer-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="copyright-year">2026</span> IDEAL Land &amp; Home Contractors LLC. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script src="js/index.js"></script>
+        <script src="js/gallery.js"></script>
+    </body>
+</html>
