@@ -2,8 +2,8 @@
  * IDEAL Land & Home — Gallery Cloudflare Worker
  *
  * Bindings required in wrangler.json:
- *   - GALLERY_KV  : KV Namespace  — stores per-item metadata
- *   - GALLERY_BUCKET : R2 Bucket  — stores image files
+ *   - ideallandhome-kv  : KV Namespace  — stores per-item metadata
+ *   - ideallandhome-r2 : R2 Bucket  — stores image files
  *   - ASSETS      : Workers Assets binding (auto-provided)
  *
  * KV Entry format  (key: "gallery:<id>", e.g. "gallery:001"):
@@ -18,7 +18,7 @@
  * }
  *
  * CLI to add an entry:
- *   wrangler kv key put "gallery:001" '{"title":"My Project","r2Key":"projects/img.jpg","category":"Land Clearing","order":1}' --binding GALLERY_KV
+ *   wrangler kv key put "gallery:001" '{"title":"My Project","r2Key":"projects/img.jpg","category":"Land Clearing","order":1}' --binding ideallandhome-kv
  *
  * CLI to upload an image to R2:
  *   wrangler r2 object put ideallandhome-gallery/projects/img.jpg --file ./img.jpg
@@ -36,7 +36,7 @@ const KV_PREFIX = 'gallery:';
 export default {
     /**
      * @param {Request} request
-     * @param {{ GALLERY_KV: KVNamespace, GALLERY_BUCKET: R2Bucket, ASSETS: Fetcher }} env
+     * @param {{ ideallandhome-kv: KVNamespace, ideallandhome-r2: R2Bucket, ASSETS: Fetcher }} env
      */
     async fetch(request, env) {
         const url = new URL(request.url);
@@ -71,7 +71,7 @@ export default {
 // ─── Image Serving ────────────────────────────────────────────────────────────
 
 async function serveImage(pathname, env) {
-    if (!env.GALLERY_BUCKET) {
+    if (!env.ideallandhome-r2) {
         return new Response('R2 bucket not configured.', { status: 503 });
     }
 
@@ -87,7 +87,7 @@ async function serveImage(pathname, env) {
         return new Response('Bad Request', { status: 400 });
     }
 
-    const object = await env.GALLERY_BUCKET.get(key);
+    const object = await env.ideallandhome-r2.get(key);
 
     if (!object) {
         return new Response('Not Found', { status: 404 });
@@ -105,7 +105,7 @@ async function serveImage(pathname, env) {
 // ─── Gallery List API ─────────────────────────────────────────────────────────
 
 async function serveGalleryList(env) {
-    if (!env.GALLERY_KV) {
+    if (!env.ideallandhome-kv) {
         return jsonResponse([], 200);
     }
 
@@ -116,7 +116,7 @@ async function serveGalleryList(env) {
 
         do {
             /** @type {KVNamespaceListResult} */
-            const page = await env.GALLERY_KV.list({ prefix: KV_PREFIX, cursor });
+            const page = await env.ideallandhome-kv.list({ prefix: KV_PREFIX, cursor });
             keys.push(...page.keys);
             cursor = page.list_complete ? undefined : page.cursor;
         } while (cursor);
@@ -128,7 +128,7 @@ async function serveGalleryList(env) {
         // Fetch all metadata in parallel
         const items = await Promise.all(
             keys.map(async ({ name }) => {
-                const value = await env.GALLERY_KV.get(name, { type: 'json' });
+                const value = await env.ideallandhome-kv.get(name, { type: 'json' });
                 return value ? { id: name, ...value } : null;
             })
         );
