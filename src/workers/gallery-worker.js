@@ -154,6 +154,10 @@ async function serveGalleryList(env) {
 
                 // Only surface objects that look like gallery items.
                 if (!item.r2Key && !item.title && !item.images) return null;
+                // Debug: log image count in response
+                if (item.images && item.images.length > 1) {
+                    console.log(`[Gallery API] ${item.title}: ${item.images.length} images from folder`);
+                }
                 return item;
             })
         );
@@ -200,19 +204,35 @@ async function resolveItemImages(item, bucket) {
     if (prefixSource && bucket) {
         const prefix = prefixSource.replace(/^\/+/, '');
         const objects = [];
-        let cursor;
+        let cursor = undefined;
+        let pageCount = 0;
 
-        do {
-            const page = await bucket.list({ prefix, cursor });
-            objects.push(...page.objects);
-            cursor = page.truncated ? page.cursor : undefined;
-        } while (cursor);
+        try {
+            do {
+                pageCount++;
+                const page = await bucket.list({ prefix, cursor, maxKeys: 1000 });
+                if (!page || !page.objects) {
+                    console.warn(`[Gallery] Page ${pageCount}: no objects returned`);
+                    break;
+                }
+                const pageObjCount = page.objects.length;
+                objects.push(...page.objects);
+                const isTruncated = page.truncated === true;
+                const hasCursor = !!page.cursor;
+                cursor = isTruncated && page.cursor ? page.cursor : undefined;
+                console.log(`[Gallery] Prefix "${prefix}" page ${pageCount}: ${pageObjCount} objects, truncated=${isTruncated}, has cursor=${hasCursor}`);
+            } while (cursor);
+        } catch (err) {
+            console.error(`[Gallery] Error listing R2 prefix "${prefix}":`, err.message);
+        }
 
+        console.log(`[Gallery] Prefix "${prefix}" total: ${objects.length} objects collected`);
         const folderImages = objects
             .map(object => object.key)
             .filter(key => !key.endsWith('/') && IMAGE_EXT_RE.test(key))
             .sort((a, b) => a.localeCompare(b));
 
+        console.log(`[Gallery] Prefix "${prefix}" images after regex filter: ${folderImages.length}`, folderImages.slice(0, 3));
         if (folderImages.length > 0) return folderImages;
     }
 

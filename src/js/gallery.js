@@ -76,6 +76,13 @@ async function loadGallery() {
         allItems = await response.json();
         filteredItems = [...allItems];
 
+        // Debug: log what was returned
+        console.log('[Gallery] API returned:', allItems.length, 'items');
+        allItems.forEach((item, i) => {
+            const imageCount = Array.isArray(item.images) ? item.images.length : (item.r2Key ? 1 : 0);
+            console.log(`  [${i}] ${item.title}: ${imageCount} image(s)`, item.images || item.r2Key);
+        });
+
         buildFilters();
         renderGrid();
     } catch (err) {
