@@ -12,6 +12,8 @@
  *   "description": "Full kitchen remodel in Jonesboro, AR.",
  *   "category":    "Renovation",
  *   "r2Key":       "projects/kitchen-jonesboro.jpg",
+ *   "r2Prefix":    "projects/kitchen-reno/", // optional folder-style source
+ *   "images":      ["projects/kitchen-reno/1.jpg", "projects/kitchen-reno/2.jpg"], // optional explicit list
  *   "date":        "2026-02-01",
  *   "featured":    true,
  *   "order":       1
@@ -32,6 +34,7 @@ const CORS_HEADERS = {
 
 // Keys that start with this prefix are treated as gallery entries
 const KV_PREFIX = 'gallery:';
+const IMAGE_EXT_RE = /\.(avif|gif|jpe?g|png|webp|bmp|svg)$/i;
 
 export default {
     /**
@@ -118,6 +121,7 @@ async function serveImage(pathname, env) {
 
 async function serveGalleryList(env) {
     const kv = getKv(env);
+    const bucket = getBucket(env);
     if (!kv) {
         return jsonResponse([], 200);
     }
@@ -138,9 +142,19 @@ async function serveGalleryList(env) {
             keys.map(async ({ name }) => {
                 const value = await kv.get(name, { type: 'json' });
                 if (!value || typeof value !== 'object') return null;
+                const item = { id: name, ...value };
+                const images = await resolveItemImages(item, bucket);
+
+                if (images.length > 0) {
+                    item.images = images;
+                    if (!item.r2Key || String(item.r2Key).endsWith('/')) {
+                        item.r2Key = images[0];
+                    }
+                }
+
                 // Only surface objects that look like gallery items.
-                if (!value.r2Key && !value.title) return null;
-                return { id: name, ...value };
+                if (!item.r2Key && !item.title && !item.images) return null;
+                return item;
             })
         );
 
@@ -169,6 +183,41 @@ async function listKvKeys(kv, prefix) {
     } while (cursor);
 
     return keys;
+}
+
+async function resolveItemImages(item, bucket) {
+    if (Array.isArray(item.images)) {
+        const explicitImages = item.images
+            .map(image => String(image || '').trim())
+            .filter(Boolean);
+        if (explicitImages.length > 0) return explicitImages;
+    }
+
+    const r2Key = typeof item.r2Key === 'string' ? item.r2Key.trim() : '';
+    const r2Prefix = typeof item.r2Prefix === 'string' ? item.r2Prefix.trim() : '';
+    const prefixSource = r2Prefix || (r2Key.endsWith('/') ? r2Key : '');
+
+    if (prefixSource && bucket) {
+        const prefix = prefixSource.replace(/^\/+/, '');
+        const objects = [];
+        let cursor;
+
+        do {
+            const page = await bucket.list({ prefix, cursor });
+            objects.push(...page.objects);
+            cursor = page.truncated ? page.cursor : undefined;
+        } while (cursor);
+
+        const folderImages = objects
+            .map(object => object.key)
+            .filter(key => !key.endsWith('/') && IMAGE_EXT_RE.test(key))
+            .sort((a, b) => a.localeCompare(b));
+
+        if (folderImages.length > 0) return folderImages;
+    }
+
+    if (r2Key && !r2Key.endsWith('/')) return [r2Key];
+    return [];
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────

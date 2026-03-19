@@ -3,11 +3,14 @@
 
 const GALLERY_API = '/api/gallery';
 const MEDIA_BASE_URL = 'https://media.ideal-land-home.com';
+const CARD_SLIDE_MS = 3500;
 
 let allItems = [];
 let filteredItems = [];
 let currentIndex = 0;
 let lastFocused = null;
+let cardSlideTimers = [];
+let cardSwapTimers = [];
 
 // ─── Utility ────────────────────────────────────────────────────────────────
 
@@ -23,6 +26,42 @@ function imageUrl(r2Key) {
     if (/^https?:\/\//i.test(r2Key)) return r2Key;
     const cleanKey = String(r2Key).replace(/^\/+/, '');
     return `${MEDIA_BASE_URL}/${cleanKey}`;
+}
+
+function getItemImageKeys(item) {
+    if (Array.isArray(item.images) && item.images.length > 0) {
+        return item.images.filter(Boolean);
+    }
+    return item.r2Key ? [item.r2Key] : [];
+}
+
+function clearCardSlideshows() {
+    cardSlideTimers.forEach(id => window.clearInterval(id));
+    cardSwapTimers.forEach(id => window.clearTimeout(id));
+    cardSlideTimers = [];
+    cardSwapTimers = [];
+}
+
+function startCardSlideshow(card, imgEl, imageSources) {
+    if (!imgEl || imageSources.length <= 1) return;
+
+    let imageIndex = 0;
+
+    const step = () => {
+        imageIndex = (imageIndex + 1) % imageSources.length;
+        imgEl.classList.add('is-fading');
+        const swapId = window.setTimeout(() => {
+            imgEl.src = imageSources[imageIndex];
+            imgEl.classList.remove('is-fading');
+        }, 120);
+        cardSwapTimers.push(swapId);
+    };
+
+    const intervalId = window.setInterval(step, CARD_SLIDE_MS);
+    cardSlideTimers.push(intervalId);
+
+    card.addEventListener('mouseenter', () => window.clearInterval(intervalId));
+    card.addEventListener('focusin', () => window.clearInterval(intervalId));
 }
 
 // ─── Gallery Load ────────────────────────────────────────────────────────────
@@ -89,6 +128,7 @@ function renderGrid() {
     const loading = document.getElementById('gallery-loading');
     const emptyEl = document.getElementById('gallery-empty');
 
+    clearCardSlideshows();
     loading.hidden = true;
     grid.innerHTML = '';
 
@@ -112,7 +152,9 @@ function buildCard(item, idx) {
     card.setAttribute('aria-label', `View ${item.title || 'project image'}`);
     card.dataset.index = idx;
 
-    const src = item.r2Key ? imageUrl(item.r2Key) : '';
+    const imageKeys = getItemImageKeys(item);
+    const imageSources = imageKeys.map(imageUrl).filter(Boolean);
+    const src = imageSources[0] || '';
     const alt = escapeHtml(item.title || 'Project image');
     const title = escapeHtml(item.title || 'Untitled Project');
     const desc = item.description ? `<p>${escapeHtml(item.description)}</p>` : '';
@@ -140,6 +182,9 @@ function buildCard(item, idx) {
             openLightbox(idx, card);
         }
     });
+
+    const cardImg = card.querySelector('.gallery-card-img-wrap img');
+    startCardSlideshow(card, cardImg, imageSources);
 
     return card;
 }
@@ -173,7 +218,8 @@ function updateLightbox() {
     const descEl = lb.querySelector('.lightbox-desc');
     const counter = lb.querySelector('.lightbox-counter');
 
-    img.src = item.r2Key ? imageUrl(item.r2Key) : '';
+    const imageKeys = getItemImageKeys(item);
+    img.src = imageKeys.length > 0 ? imageUrl(imageKeys[0]) : '';
     img.alt = item.title || 'Project image';
     titleEl.textContent = item.title || '';
     descEl.textContent = item.description || '';
