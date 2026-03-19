@@ -46,6 +46,7 @@ function startCardSlideshow(card, imgEl, imageSources) {
     if (!imgEl || imageSources.length <= 1) return;
 
     let imageIndex = 0;
+    let intervalId = null;
 
     const step = () => {
         imageIndex = (imageIndex + 1) % imageSources.length;
@@ -57,11 +58,25 @@ function startCardSlideshow(card, imgEl, imageSources) {
         cardSwapTimers.push(swapId);
     };
 
-    const intervalId = window.setInterval(step, CARD_SLIDE_MS);
-    cardSlideTimers.push(intervalId);
+    const startSlide = () => {
+        if (!intervalId) {
+            intervalId = window.setInterval(step, CARD_SLIDE_MS);
+            cardSlideTimers.push(intervalId);
+        }
+    };
 
-    card.addEventListener('mouseenter', () => window.clearInterval(intervalId));
-    card.addEventListener('focusin', () => window.clearInterval(intervalId));
+    const pauseSlide = () => {
+        if (intervalId) {
+            window.clearInterval(intervalId);
+            intervalId = null;
+        }
+    };
+
+    startSlide();
+    card.addEventListener('mouseenter', pauseSlide);
+    card.addEventListener('mouseleave', startSlide);
+    card.addEventListener('focusin', pauseSlide);
+    card.addEventListener('focusout', startSlide);
 }
 
 // ─── Gallery Load ────────────────────────────────────────────────────────────
@@ -201,6 +216,7 @@ function buildCard(item, idx) {
 function openLightbox(idx, triggerEl) {
     lastFocused = triggerEl || document.activeElement;
     currentIndex = idx;
+    lightboxImageIndex = 0;
 
     const lb = document.getElementById('gallery-lightbox');
     lb.hidden = false;
@@ -226,28 +242,49 @@ function updateLightbox() {
     const counter = lb.querySelector('.lightbox-counter');
 
     const imageKeys = getItemImageKeys(item);
-    img.src = imageKeys.length > 0 ? imageUrl(imageKeys[0]) : '';
+    const currentImageUrl = imageKeys[lightboxImageIndex] ? imageUrl(imageKeys[lightboxImageIndex]) : '';
+    img.src = currentImageUrl;
     img.alt = item.title || 'Project image';
     titleEl.textContent = item.title || '';
     descEl.textContent = item.description || '';
-    counter.textContent = `${currentIndex + 1} / ${filteredItems.length}`;
 
-    lb.querySelector('.lightbox-prev').disabled = currentIndex === 0;
-    lb.querySelector('.lightbox-next').disabled = currentIndex === filteredItems.length - 1;
+    // Show which image within project, and total projects
+    if (imageKeys.length > 1) {
+        counter.textContent = `${lightboxImageIndex + 1} / ${imageKeys.length} images in project (Project ${currentIndex + 1} / ${filteredItems.length})`;
+    } else {
+        counter.textContent = `Project ${currentIndex + 1} / ${filteredItems.length}`;
+    }
+
+    // Prev/Next buttons only disabled at gallery edges when on single-image projects
+    const isMultiImage = imageKeys.length > 1;
+    lb.querySelector('.lightbox-prev').disabled = !isMultiImage && currentIndex === 0;
+    lb.querySelector('.lightbox-next').disabled = !isMultiImage && currentIndex === filteredItems.length - 1;
 }
 
+let lightboxImageIndex = 0;
+
 function lightboxPrev() {
-    if (currentIndex > 0) {
+    const item = filteredItems[currentIndex];
+    const imageKeys = getItemImageKeys(item);
+    if (imageKeys.length > 1) {
+        lightboxImageIndex = (lightboxImageIndex - 1 + imageKeys.length) % imageKeys.length;
+    } else if (currentIndex > 0) {
         currentIndex--;
-        updateLightbox();
+        lightboxImageIndex = 0;
     }
+    updateLightbox();
 }
 
 function lightboxNext() {
-    if (currentIndex < filteredItems.length - 1) {
+    const item = filteredItems[currentIndex];
+    const imageKeys = getItemImageKeys(item);
+    if (imageKeys.length > 1) {
+        lightboxImageIndex = (lightboxImageIndex + 1) % imageKeys.length;
+    } else if (currentIndex < filteredItems.length - 1) {
         currentIndex++;
-        updateLightbox();
+        lightboxImageIndex = 0;
     }
+    updateLightbox();
 }
 
 // ─── Init ─────────────────────────────────────────────────────────────────────
