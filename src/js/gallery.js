@@ -255,10 +255,11 @@ function updateLightbox() {
         counter.textContent = `Project ${currentIndex + 1} / ${filteredItems.length}`;
     }
 
-    // Prev/Next buttons only disabled at gallery edges when on single-image projects
+    // Single-image projects: disable both buttons
+    // Multi-image projects: buttons are always enabled (cycle within project)
     const isMultiImage = imageKeys.length > 1;
-    lb.querySelector('.lightbox-prev').disabled = !isMultiImage && currentIndex === 0;
-    lb.querySelector('.lightbox-next').disabled = !isMultiImage && currentIndex === filteredItems.length - 1;
+    lb.querySelector('.lightbox-prev').disabled = !isMultiImage;
+    lb.querySelector('.lightbox-next').disabled = !isMultiImage;
 }
 
 let lightboxImageIndex = 0;
@@ -266,24 +267,22 @@ let lightboxImageIndex = 0;
 function lightboxPrev() {
     const item = filteredItems[currentIndex];
     const imageKeys = getItemImageKeys(item);
+    // Only navigate images/projects if multi-image project
     if (imageKeys.length > 1) {
         lightboxImageIndex = (lightboxImageIndex - 1 + imageKeys.length) % imageKeys.length;
-    } else if (currentIndex > 0) {
-        currentIndex--;
-        lightboxImageIndex = 0;
     }
+    // Single-image projects: do nothing
     updateLightbox();
 }
 
 function lightboxNext() {
     const item = filteredItems[currentIndex];
     const imageKeys = getItemImageKeys(item);
+    // Only navigate images/projects if multi-image project
     if (imageKeys.length > 1) {
         lightboxImageIndex = (lightboxImageIndex + 1) % imageKeys.length;
-    } else if (currentIndex < filteredItems.length - 1) {
-        currentIndex++;
-        lightboxImageIndex = 0;
     }
+    // Single-image projects: do nothing
     updateLightbox();
 }
 
