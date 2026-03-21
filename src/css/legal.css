@@ -1,0 +1,118 @@
+/* ===== Legal Pages (Terms & Conditions / Privacy Policy) ===== */
+
+/* Hero */
+.legal-hero {
+    background: var(--primary-dark);
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+}
+
+.legal-hero h2 {
+    color: var(--white);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.legal-hero p {
+    color: var(--secondary-accent);
+    font-size: 1rem;
+}
+
+/* Content wrapper */
+.legal-content {
+    max-width: 820px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+/* "Last updated" notice */
+.legal-meta {
+    background: #EEF4F8;
+    border-left: 4px solid var(--primary-accent);
+    padding: 0.9rem 1.25rem;
+    margin-bottom: 2.5rem;
+    border-radius: 0 4px 4px 0;
+}
+
+.legal-meta p {
+    color: var(--secondary-text);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* Section headings */
+.legal-content h3 {
+    color: var(--primary-dark);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 2.5rem 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--primary-accent);
+}
+
+/* Body copy */
+.legal-content p {
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+}
+
+/* Lists */
+.legal-content ul {
+    margin: 0.25rem 0 1rem 1.5rem;
+    line-height: 1.75;
+}
+
+.legal-content ul li {
+    margin-bottom: 0.4rem;
+    color: var(--primary-dark);
+}
+
+/* Contact / highlight block */
+.legal-contact-block {
+    background: var(--primary-dark);
+    color: var(--white);
+    border-radius: 6px;
+    padding: 1.5rem 1.75rem;
+    margin-top: 2.5rem;
+}
+
+.legal-contact-block h3 {
+    color: var(--primary-accent);
+    border-bottom: none;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.legal-contact-block p {
+    color: var(--white);
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+}
+
+.legal-contact-block a {
+    color: var(--secondary-accent);
+    text-decoration: none;
+}
+
+.legal-contact-block a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .legal-hero {
+        padding: 3rem 1.5rem 2.5rem;
+    }
+
+    .legal-hero h2 {
+        font-size: 1.6rem;
+    }
+
+    .legal-content {
+        margin: 2rem auto;
+        padding: 0 1.25rem;
+    }
+}

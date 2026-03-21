@@ -56,9 +56,9 @@
                 <nav class="main-nav">
                     <ul>
                         <li><a href="/">Home</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="/gallery">Gallery</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/about">About</a></li>
                     </ul>
                 </nav>
             </div>
@@ -159,10 +159,53 @@
                                 </div>
                             </div>
 
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="location">Property Location</label>
+                                    <input type="text" id="location" name="location" autocomplete="address-level2"
+                                           placeholder="City, AR or Zip Code">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact_method">Preferred Contact Method</label>
+                                    <select id="contact_method" name="contact_method">
+                                        <option value="" disabled selected>Select a preference…</option>
+                                        <option value="Email">Email</option>
+                                        <option value="Phone Call">Phone Call</option>
+                                        <option value="Text Message">Text Message</option>
+                                        <option value="No preference">No preference</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="timeline">Project Timeline</label>
+                                <select id="timeline" name="timeline">
+                                    <option value="" disabled selected>When do you need to start?</option>
+                                    <option value="ASAP">As soon as possible</option>
+                                    <option value="1-3 months">Within 1–3 months</option>
+                                    <option value="3-6 months">Within 3–6 months</option>
+                                    <option value="6+ months">6+ months out</option>
+                                    <option value="Just planning">Just planning / exploring options</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="referral">How Did You Hear About Us?</label>
+                                <select id="referral" name="referral">
+                                    <option value="" disabled selected>Select an option…</option>
+                                    <option value="Google / Internet Search">Google / Internet Search</option>
+                                    <option value="Facebook / Social Media">Facebook / Social Media</option>
+                                    <option value="Friend or Family Referral">Friend or Family Referral</option>
+                                    <option value="Existing Customer">Existing Customer</option>
+                                    <option value="Yard Sign / Truck">Yard Sign / Truck</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label for="message">Project Details <span class="required" aria-label="required">*</span></label>
-                                <textarea id="message" name="message" rows="6" required
-                                          placeholder="Tell us about your project — location, size, timeline, budget, etc."></textarea>
+                                <textarea id="message" name="message" rows="8" required
+                                          placeholder="Describe your project — what work is needed, property size, access details, any specific requirements, etc."></textarea>
                             </div>
 
                             <button type="submit" id="contact-submit" class="btn-submit">
@@ -182,13 +225,14 @@
                 <p>Professional land clearing, home construction, and renovation in Arkansas.</p>
                 <ul class="footer-nav">
                     <li><a href="/">Home</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="/gallery">Gallery</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/about">About</a></li>
                 </ul>
             </div>
             <div class="footer-bottom">
                 <p>&copy; <span id="copyright-year">2026</span> IDEAL Land &amp; Home Contractors LLC. All rights reserved.</p>
+                <p><a href="/legal/privacy">Privacy Policy</a> &nbsp;|&nbsp; <a href="/legal/terms">Terms &amp; Conditions</a></p>
             </div>
         </footer>
 
