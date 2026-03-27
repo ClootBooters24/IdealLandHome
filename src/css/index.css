@@ -1,17 +1,22 @@
 ﻿/* Color Palette */
 :root {
     --page-bg: #FCFBF9;
-    --primary-dark: #102F43;
-    --secondary-text: #3A556A;
-    --primary-accent: #F6AE2D;
-    --secondary-accent: #5FA8D3;
     --white: #FFFFFF;
+    --text-primary: #000000;
+    --text-secondary: #3A556A;
+    --primary-accent: #5FA8D3;
+    --font-brand: 'Montserrat', 'Gotham', 'Helvetica Neue', Arial, sans-serif;
+    --font-ui: 'Montserrat', 'Gotham', 'Helvetica Neue', Arial, sans-serif;
+    --transition: 0.3s ease;
 }
 
 /* Page layout */
 body {
     background-color: var(--page-bg);
-    color: var(--primary-dark);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-weight: 500;
+    text-align: center;
 }
 
 main {
@@ -20,26 +25,41 @@ main {
     background: var(--page-bg);
 }
 
+/* Main homepage text */
+main h1,
+main h2,
+main h3 {
+    font-family: var(--font-brand);
+    font-weight: 800;
+}
+
+main p {
+    font-family: var(--font-ui);
+    font-weight: 500;
+}
+
 /* Header / Navigation */
 header,
 nav {
-    background-color: var(--primary-dark);
+    background-color: var(--primary-accent);
     color: var(--white);
 }
 
 /* Body text */
 p {
-    color: var(--primary-dark);
+    color: var(--text-primary);
 }
 
 /* Secondary text */
 .secondary-text,
 small {
-    color: var(--secondary-text);
+    color: var(--text-secondary);
+    font-family: var(--font-ui);
+    font-weight: 500;
 }
 
 /* Footer */
 footer {
-    background-color: var(--primary-dark);
+    background-color: var(--primary-accent);
     color: var(--white);
 }
