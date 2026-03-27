@@ -63,3 +63,108 @@ footer {
     background-color: var(--primary-accent);
     color: var(--white);
 }
+
+/* 404 Page */
+.error-hero {
+    width: 100%;
+    max-width: 860px;
+}
+
+.error-card {
+    background: var(--white);
+    border: 1px solid rgba(16, 47, 67, 0.1);
+    border-radius: 22px;
+    box-shadow: 0 18px 48px rgba(16, 47, 67, 0.12);
+    padding: 3rem 2.4rem;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.error-code {
+    margin: 0;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1;
+    font-weight: 800;
+    color: var(--primary-accent);
+}
+
+.error-card h2 {
+    margin: 0.7rem 0 1rem;
+    font-size: clamp(1.6rem, 4vw, 2.3rem);
+    color: var(--primary-dark);
+}
+
+.error-message {
+    margin: 0 auto;
+    max-width: 60ch;
+    color: var(--secondary-text);
+    font-size: 1.03rem;
+    line-height: 1.6;
+}
+
+.error-actions {
+    margin-top: 1.8rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    min-width: 170px;
+    padding: 0.72rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    box-shadow: 0 10px 24px rgba(16, 47, 67, 0.22);
+}
+
+.btn-primary:hover {
+    background-color: #153c57;
+}
+
+.btn-secondary {
+    background-color: #eef5f9;
+    color: var(--primary-dark);
+    border: 1px solid rgba(16, 47, 67, 0.2);
+}
+
+.btn-secondary:hover {
+    background-color: #e6f0f6;
+}
+
+.error-help {
+    margin: 1.3rem 0 0;
+    color: var(--secondary-text);
+}
+
+.error-help a {
+    color: var(--primary-dark);
+    font-weight: 700;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+    .error-card {
+        padding: 2.2rem 1.3rem;
+        border-radius: 18px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
