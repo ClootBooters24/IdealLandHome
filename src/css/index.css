@@ -68,9 +68,16 @@ footer {
 }
 
 /* 404 Page */
+.page-404 main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .error-hero {
     width: 100%;
     max-width: 860px;
+    margin: 0 auto;
 }
 
 .error-card {
@@ -94,13 +101,13 @@ footer {
 .error-card h2 {
     margin: 0.7rem 0 1rem;
     font-size: clamp(1.6rem, 4vw, 2.3rem);
-    color: var(--primary-dark);
+    color: var(--text-primary);
 }
 
 .error-message {
     margin: 0 auto;
     max-width: 60ch;
-    color: var(--secondary-text);
+    color: var(--text-secondary);
     font-size: 1.03rem;
     line-height: 1.6;
 }
@@ -129,19 +136,19 @@ footer {
 }
 
 .btn-primary {
-    background-color: var(--primary-dark);
+    background-color: var(--primary-accent);
     color: var(--white);
-    box-shadow: 0 10px 24px rgba(16, 47, 67, 0.22);
+    box-shadow: 0 10px 24px rgba(95, 168, 211, 0.32);
 }
 
 .btn-primary:hover {
-    background-color: #153c57;
+    background-color: #4b95c1;
 }
 
 .btn-secondary {
     background-color: #eef5f9;
-    color: var(--primary-dark);
-    border: 1px solid rgba(16, 47, 67, 0.2);
+    color: var(--text-primary);
+    border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .btn-secondary:hover {
@@ -150,11 +157,11 @@ footer {
 
 .error-help {
     margin: 1.3rem 0 0;
-    color: var(--secondary-text);
+    color: var(--text-secondary);
 }
 
 .error-help a {
-    color: var(--primary-dark);
+    color: var(--text-primary);
     font-weight: 700;
     text-decoration-thickness: 2px;
     text-underline-offset: 2px;

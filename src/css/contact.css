@@ -1,7 +1,7 @@
 /* ===== Contact Page ===== */
 
 .contact-hero {
-    background: var(--primary-dark);
+    background: var(--primary-accent);
     color: var(--white);
     /* Negative margin pulls the hero flush against the fixed header */
     margin-top: -110px;
@@ -47,13 +47,13 @@
     background: var(--white);
     border-radius: 12px;
     padding: 2rem;
-    box-shadow: 0 2px 16px rgba(16, 47, 67, 0.08);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 100px;
 }
 
 .contact-info h3 {
-    color: var(--primary-dark);
+    color: var(--text-primary);
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
     padding-bottom: 0.75rem;
@@ -69,9 +69,8 @@
 }
 
 .contact-info-list li {
-    display: flex;
-    gap: 0.75rem;
-    align-items: flex-start;
+    display: block;
+    text-align: center;
 }
 
 .contact-info-icon {
@@ -82,7 +81,7 @@
 
 .contact-info-list strong {
     display: block;
-    color: var(--primary-dark);
+    color: var(--text-primary);
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -90,14 +89,14 @@
 }
 
 .contact-info-list p {
-    color: var(--secondary-text);
+    color: var(--text-secondary);
     font-size: 0.95rem;
     margin: 0;
     line-height: 1.5;
 }
 
 .contact-info-list a {
-    color: var(--secondary-accent);
+    color: var(--primary-accent);
     text-decoration: none;
     transition: color 0.2s ease;
 }
@@ -107,10 +106,10 @@
 }
 
 .contact-services h4 {
-    color: var(--primary-dark);
+    color: var(--text-primary);
     font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.0w5em;
     margin-bottom: 0.75rem;
 }
 
@@ -122,16 +121,16 @@
 }
 
 .contact-services li {
-    color: var(--secondary-text);
+    color: var(--text-secondary);
     font-size: 0.9rem;
-    padding-left: 1rem;
+    padding-left: 1.75rem;
     position: relative;
 }
 
 .contact-services li::before {
     content: '→';
     position: absolute;
-    left: 0;
+    left: 0.2rem;
     color: var(--primary-accent);
     font-size: 0.8rem;
 }
@@ -141,7 +140,7 @@
     background: var(--white);
     border-radius: 12px;
     padding: 2.5rem;
-    box-shadow: 0 2px 16px rgba(16, 47, 67, 0.08);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
 }
 
 .form-row {
@@ -165,7 +164,7 @@
 .form-group label {
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--primary-dark);
+    color: var(--text-primary);
 }
 
 .required {
@@ -181,7 +180,7 @@
     border: 1px solid #d0dae3;
     border-radius: 8px;
     font-size: 0.95rem;
-    color: var(--primary-dark);
+    color: var(--text-primary);
     background: var(--page-bg);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     font-family: inherit;
@@ -190,7 +189,7 @@
 }
 
 .form-group select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%233A556A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235FA8D3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     padding-right: 2.5rem;
@@ -200,7 +199,7 @@
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--secondary-accent);
+    border-color: var(--primary-accent);
     box-shadow: 0 0 0 3px rgba(95, 168, 211, 0.2);
 }
 
@@ -223,7 +222,7 @@
     gap: 0.5rem;
     padding: 0.85rem 2.5rem;
     background: var(--primary-accent);
-    color: var(--primary-dark);
+    color: var(--white);
     font-size: 1rem;
     font-weight: 700;
     font-family: inherit;
@@ -235,8 +234,8 @@
 }
 
 .btn-submit:hover {
-    background: #e09e1a;
-    box-shadow: 0 4px 14px rgba(246, 174, 45, 0.4);
+    background: #4b95c1;
+    box-shadow: 0 4px 14px rgba(95, 168, 211, 0.4);
 }
 
 .btn-submit:active {
@@ -263,7 +262,7 @@
     height: 64px;
     border-radius: 50%;
     background: var(--primary-accent);
-    color: var(--primary-dark);
+    color: var(--white);
     font-size: 1.8rem;
     font-weight: 900;
     margin-bottom: 1.25rem;
@@ -271,12 +270,12 @@
 
 .form-success h3 {
     font-size: 1.5rem;
-    color: var(--primary-dark);
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
 .form-success p {
-    color: var(--secondary-text);
+    color: var(--text-secondary);
     font-size: 1rem;
 }
 
