@@ -4,7 +4,7 @@
 .about-hero {
     text-align: center;
     padding: 4rem 2rem 2rem;
-    background: linear-gradient(135deg, var(--page-bg) 0%, rgba(245, 248, 250, 0.8) 100%);
+    background: var(--page-bg);
 }
 
 .about-hero h2 {
