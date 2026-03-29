@@ -29,6 +29,9 @@
     max-width: 1000px;
     margin: 0 auto;
     padding: 3rem 2rem;
+	display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
 }
 
 .about-section {
