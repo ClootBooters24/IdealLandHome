@@ -466,7 +466,9 @@ footer {
 }
 
 .btn-secondary:hover {
-    background-color: #e6f0f6;
+    background-color: #cfe3f0;
+    border-color: #b8d5e7;
+    color: var(--text-primary);
 }
 
 .error-help {
