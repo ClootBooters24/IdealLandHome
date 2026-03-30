@@ -70,16 +70,14 @@
 .services-list {
     list-style: none;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-.services-list li {
     background: var(--white);
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.services-list li {
+    margin-bottom: 0.5rem;
 }
 
 .services-list strong {
@@ -143,10 +141,6 @@
 
     .about-section h3::after {
         width: 55px;
-    }
-
-    .services-list {
-        grid-template-columns: 1fr;
     }
 
     .why-choose-us {
