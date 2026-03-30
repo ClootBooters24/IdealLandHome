@@ -96,8 +96,12 @@
 }
 
 .contact-info-list a {
+    display: inline-block;
+    max-width: 100%;
     color: var(--primary-accent);
     text-decoration: none;
+    overflow-wrap: anywhere;
+    word-break: break-word;
     transition: color 0.2s ease;
 }
 

@@ -185,7 +185,7 @@
         display: block;
         font-size: 1.1rem;
         padding: 0.75rem 0;
-        color: var(--primary-dark);
+        color: var(--primary-accent);
     }
 
     .main-nav a:hover,
@@ -252,7 +252,7 @@
         display: block;
         font-size: 1.1rem;
         padding: 0.75rem 0;
-        color: var(--primary-dark);
+        color: var(--primary-accent);
     }
 
     .main-nav a:hover,

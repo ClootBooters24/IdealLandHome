@@ -83,6 +83,11 @@ footer .secondary-text {
     display: inline;
 }
 
+.copyright-line .copyright-meta,
+.copyright-line .copyright-text {
+    display: inline;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     footer {
@@ -91,5 +96,18 @@ footer .secondary-text {
     
     .footer-section {
         margin-bottom: 1.5rem;
+    }
+
+    .footer-bottom .copyright-line {
+        display: block;
+    }
+
+    .copyright-line .copyright-meta,
+    .copyright-line .copyright-text {
+        display: block;
+    }
+
+    .copyright-line .copyright-text {
+        margin-top: 0.15rem;
     }
 }
