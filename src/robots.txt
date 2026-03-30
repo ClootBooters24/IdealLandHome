@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.ideal-land-home.com/sitemap.xml
+Sitemap: https://ideal-land-home.com/sitemap.xml

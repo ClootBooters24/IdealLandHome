@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://www.ideal-land-home.com/</loc>
+        <loc>https://ideal-land-home.com/</loc>
         <priority>1.00</priority>
     </url>
     <url>
-        <loc>https://www.ideal-land-home.com/gallery</loc>
+        <loc>https://ideal-land-home.com/gallery</loc>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://www.ideal-land-home.com/about</loc>
+        <loc>https://ideal-land-home.com/about</loc>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://www.ideal-land-home.com/contact</loc>
+        <loc>https://ideal-land-home.com/contact</loc>
         <priority>0.80</priority>
     </url>
 
     <!-- Legal Pages -->
     <url>
-        <loc>https://www.ideal-land-home.com/legal/privacy</loc>
+        <loc>https://ideal-land-home.com/legal/privacy</loc>
         <priority>0.50</priority>
     </url>
     <url>
-        <loc>https://www.ideal-land-home.com/legal/terms</loc>
+        <loc>https://ideal-land-home.com/legal/terms</loc>
         <priority>0.50</priority>
     </url>
 </urlset>
