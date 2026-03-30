@@ -35,6 +35,12 @@ main {
     padding: 0 2rem;
 }
 
+/* Defer rendering of below-the-fold sections to reduce initial LCP pressure. */
+.deferred-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
+}
+
 /* Hero Section */
 .hero {
     padding: 4rem 2rem;
