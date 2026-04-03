@@ -1,5 +1,5 @@
 /**
- * IDEAL Land & Home — Gallery Cloudflare Worker
+ * IDEAL Land & Home Contractors — Gallery Cloudflare Worker
  *
  * Bindings required in wrangler.json:
  *   - ideallandhome-kv  : KV Namespace  — stores per-item metadata
