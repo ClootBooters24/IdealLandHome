@@ -50,7 +50,7 @@ main {
 }
 
 .usa-flag {
-    width: min(100%, 640px);
+    width: min(100%, 320px);
     aspect-ratio: 7410 / 3900;
     height: auto;
     display: block;
