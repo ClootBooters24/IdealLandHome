@@ -473,42 +473,6 @@ footer {
     flex-wrap: wrap;
 }
 
-.btn {
-    display: inline-block;
-    min-width: 170px;
-    padding: 0.72rem 1.2rem;
-    border-radius: 999px;
-    font-weight: 700;
-    text-decoration: none;
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-}
-
-.btn:hover {
-    transform: translateY(-1px);
-}
-
-.btn-primary {
-    background-color: var(--primary-accent);
-    color: var(--text-light);
-    box-shadow: 0 10px 24px rgba(95, 168, 211, 0.32);
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-accent);
-}
-
-.btn-secondary {
-    background-color: #eef5f9;
-    color: var(--text-light);
-    border: 1px solid rgba(0, 0, 0, 0.15);
-}
-
-.btn-secondary:hover {
-    background-color: #cfe3f0;
-    border-color: #b8d5e7;
-    color: var(--text-light);
-}
 
 .error-help {
     margin: 1.3rem 0 0;
