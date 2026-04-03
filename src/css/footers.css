@@ -140,3 +140,9 @@ footer .secondary-text {
     fill: #fff;
     flex-shrink: 0;
 }
+
+.creatorNote a {
+    color: #888888;
+    text-decoration: underline;
+    font-size: 0.7rem;
+}
