@@ -58,7 +58,7 @@ if (toggle && nav) {
 // Projects Carousel
 const GALLERY_API = '/api/gallery';
 const MEDIA_BASE_URL = 'https://media.ideal-land-home.com';
-const CAROUSEL_SLIDE_MS = 3500;
+const CAROUSEL_SLIDE_MS = 5000;
 
 let carouselImages = [];
 let currentCarouselIndex = 0;
@@ -124,16 +124,12 @@ function startCarousel() {
 
 function updateCarousel() {
     const imgEl = document.getElementById('carousel-img');
-    const titleEl = document.getElementById('carousel-title');
-    const descEl = document.getElementById('carousel-desc');
     const current = carouselImages[currentCarouselIndex];
     imgEl.classList.add('is-fading');
     if (carouselSwapTimeoutId) clearTimeout(carouselSwapTimeoutId);
     carouselSwapTimeoutId = setTimeout(() => {
         imgEl.src = current.src;
         imgEl.alt = current.title;
-        titleEl.textContent = current.title;
-        descEl.textContent = current.description;
         imgEl.classList.remove('is-fading');
     }, 120);
 }
