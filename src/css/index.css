@@ -2,9 +2,11 @@
 :root {
     --page-bg: #FCFBF9;
     --white: #FFFFFF;
+    --text-light: #FFFFFF;
     --text-primary: #000000;
     --text-secondary: #3A556A;
-    --primary-accent: #5FA8D3;
+    /* --primary-accent: #02155a; */
+    --primary-accent: #042d62;
     --font-brand: 'Montserrat', 'Gotham', 'Helvetica Neue', Arial, sans-serif;
     --font-ui: 'Montserrat', 'Gotham', 'Helvetica Neue', Arial, sans-serif;
     --transition: 0.3s ease;
@@ -92,13 +94,12 @@ main {
 }
 
 .btn-primary:hover {
-    background-color: #4b95c1;
+    background-color: var(--primary-accent);
 }
 
 .btn-secondary {
-    background-color: var(--white);
-    color: var(--text-primary);
-    border: 2px solid var(--primary-accent);
+    background-color: var(--primary-accent);
+    color: var(--text-light);
 }
 
 .btn-secondary:hover {
@@ -183,50 +184,82 @@ section h2 {
     background: var(--page-bg);
 }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.project-card {
+.projects-carousel {
     background: var(--white);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-top: 3rem;
+    position: relative;
 }
 
-.project-image {
-    height: 250px;
+.carousel-container {
+    position: relative;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
+    background: #e8edf0;
 }
 
-.image-placeholder {
+#carousel-img {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--primary-accent), #4b95c1);
+    object-fit: cover;
+    transition: opacity 0.2s ease;
+    display: block;
+}
+
+#carousel-img.is-fading {
+    opacity: 0.45;
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--white);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--white);
-    font-weight: 600;
-    font-size: 1.1rem;
 }
 
-.project-info {
+.carousel-prev:hover,
+.carousel-next:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-prev {
+    left: 1rem;
+}
+
+.carousel-next {
+    right: 1rem;
+}
+
+.carousel-caption {
     padding: 1.5rem;
+    text-align: center;
 }
 
-.project-info h3 {
+#carousel-title {
     font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    font-weight: 700;
     color: var(--text-primary);
+    margin-bottom: 0.5rem;
 }
 
-.project-info p {
+#carousel-desc {
     color: var(--text-secondary);
     line-height: 1.6;
+    margin: 0;
 }
 
 .projects-cta {
@@ -236,13 +269,13 @@ section h2 {
 
 .projects-cta .btn {
     background-color: var(--primary-accent);
-    color: var(--text-primary);
+    color: var(--white);
     border: none;
-    box-shadow: 0 8px 25px rgba(95, 168, 211, 0.3);
 }
 
 .projects-cta .btn:hover {
     background-color: var(--primary-accent);
+    color: var(--white);
 }
 
 /* About Preview Section */
@@ -327,7 +360,7 @@ section h2 {
 
 .cta-section .btn-primary {
     background-color: var(--primary-accent);
-    color: var(--text-primary);
+    color: var(--text-light);
     border: none;
     box-shadow: 0 8px 25px rgba(95, 168, 211, 0.3);
 }
@@ -345,7 +378,7 @@ section h2 {
 
 .cta-section .btn-secondary:hover {
     background-color: var(--primary-accent);
-    color: var(--text-primary);
+    color: var(--text-light);
 }
 
 /* Main homepage text */
@@ -457,24 +490,24 @@ footer {
 
 .btn-primary {
     background-color: var(--primary-accent);
-    color: var(--text-primary);
+    color: var(--text-light);
     box-shadow: 0 10px 24px rgba(95, 168, 211, 0.32);
 }
 
 .btn-primary:hover {
-    background-color: #4b95c1;
+    background-color: var(--primary-accent);
 }
 
 .btn-secondary {
     background-color: #eef5f9;
-    color: var(--text-primary);
+    color: var(--text-light);
     border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .btn-secondary:hover {
     background-color: #cfe3f0;
     border-color: #b8d5e7;
-    color: var(--text-primary);
+    color: var(--text-light);
 }
 
 .error-help {

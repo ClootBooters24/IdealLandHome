@@ -9,7 +9,7 @@ footer {
 }
 
 footer a {
-    color: var(--text-primary);
+    color: var(--text-light);
     text-decoration: none;
     transition: color 0.3s ease;
     font-family: var(--font-ui);
@@ -17,7 +17,7 @@ footer a {
 }
 
 footer a:hover {
-    color: var(--text-secondary);
+    color: var(--text-light);
 }
 
 footer p {
@@ -27,7 +27,7 @@ footer p {
 }
 
 footer .secondary-text {
-    color: var(--text-primary);
+    color: var(--text-light);
     opacity: 0.8;
 }
 
@@ -67,7 +67,7 @@ footer .secondary-text {
     padding-top: 2rem;
     margin-top: 2rem;
     text-align: center;
-    color: var(--text-primary);
+    color: var(--text-light);
     font-size: 0.9rem;
 }
 
