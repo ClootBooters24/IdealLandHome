@@ -55,9 +55,11 @@ if (toggle && nav) {
     });
 }
 
-// Projects Carousel
-const GALLERY_API = '/api/gallery';
-const MEDIA_BASE_URL = 'https://media.ideal-land-home.com';
+// Projects Carousel (only on pages with carousel)
+if (!window.GALLERY_API) {
+    window.GALLERY_API = '/api/gallery';
+    window.MEDIA_BASE_URL = 'https://media.ideal-land-home.com';
+}
 const CAROUSEL_SLIDE_MS = 5000;
 
 let carouselImages = [];
@@ -75,7 +77,7 @@ function imageUrl(r2Key) {
     if (!r2Key) return '';
     if (/^https?:\/\//i.test(r2Key)) return r2Key;
     const cleanKey = String(r2Key).replace(/^\/+/, '');
-    return `${MEDIA_BASE_URL}/${cleanKey}`;
+    return `${window.MEDIA_BASE_URL}/${cleanKey}`;
 }
 
 function getItemImageKeys(item) {
@@ -87,7 +89,7 @@ function getItemImageKeys(item) {
 
 async function loadCarousel() {
     try {
-        const response = await fetch(GALLERY_API);
+        const response = await fetch(window.GALLERY_API);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const allItems = await response.json();
         carouselImages = [];
@@ -124,6 +126,7 @@ function startCarousel() {
 
 function updateCarousel() {
     const imgEl = document.getElementById('carousel-img');
+    if (!imgEl) return; // Carousel not on this page
     const current = carouselImages[currentCarouselIndex];
     imgEl.classList.add('is-fading');
     if (carouselSwapTimeoutId) clearTimeout(carouselSwapTimeoutId);
@@ -163,7 +166,10 @@ function resumeCarousel() {
 
 // Initialize carousel on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-    loadCarousel();
+    // Only load carousel if carousel element exists on page
+    if (document.getElementById('carousel-img')) {
+        loadCarousel();
+    }
 
     const carouselContainer = document.querySelector('.carousel-container');
     if (carouselContainer) {
