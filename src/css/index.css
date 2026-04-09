@@ -44,21 +44,6 @@ main {
 }
 
 /* Hero Section */
-.hero-flag {
-    padding: 1rem 2rem 0;
-    background: linear-gradient(135deg, var(--page-bg) 0%, rgba(95, 168, 211, 0.05) 100%);
-}
-
-.usa-flag {
-    width: min(100%, 272px);
-    aspect-ratio: 7410 / 3900;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.14);
-}
-
 .hero {
     padding: 4rem 2rem;
     text-align: center;
@@ -519,14 +504,6 @@ footer {
 
     .hero {
         padding: 3rem 1rem;
-    }
-
-    .hero-flag {
-        padding: 0.75rem 1rem 0;
-    }
-
-    .usa-flag {
-        border-radius: 8px;
     }
 
     .hero h2 {
