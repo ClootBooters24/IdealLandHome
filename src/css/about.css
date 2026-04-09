@@ -117,6 +117,15 @@
     margin: 0;
 }
 
+.about-section .services-certifications {
+    background: var(--white);
+}
+
+.about-section .services-certifications ul,
+.about-section .services-certifications ul li {
+    color: var(--text-primary);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .about-hero {
